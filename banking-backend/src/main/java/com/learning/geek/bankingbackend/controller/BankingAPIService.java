@@ -1,16 +1,34 @@
 package com.learning.geek.bankingbackend.controller;
 
-import com.learning.geek.bankingbackend.model.userDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.learning.geek.bankingbackend.model.UserDetails;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/bankingapi")
 public class BankingAPIService {
+
+    UserDetails userDetails;
+
     @GetMapping("{userId}")
-    public userDetails getUserDetails(String userId) {
-        return new userDetails("Sh", "Sing", "ss@gmil.com",
-                "90423", "Dev");
+    public UserDetails getUserDetails(String userId) {
+        return userDetails;
+    }
+
+    @PostMapping
+    public String createUserDetails(@RequestBody UserDetails userDetails) {
+        this.userDetails = userDetails;
+        return "User created successfully";
+    }
+
+    @PutMapping
+    public String updateUserDetails(@RequestBody UserDetails userDetails) {
+        this.userDetails = userDetails;
+        return "User updated successfully";
+    }
+
+    @DeleteMapping("{userId}")
+    public String deleteUserDetails(String userId) {
+        this.userDetails = null;
+        return "User Deleted successfully";
     }
 }

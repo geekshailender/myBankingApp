@@ -1,20 +1,31 @@
 package com.learning.geek.bankingbackend.model;
 
-public class userDetails {
+public class UserDetails {
+
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private String role;
 
-    public userDetails() {
+    public UserDetails() {
     }
-    public userDetails(String firstName, String lastName, String email, String phoneNumber, String role) {
+    public UserDetails(Integer userId, String firstName, String lastName, String email, String phoneNumber, String role) {
+        this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.role = role;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getFirstName() {
